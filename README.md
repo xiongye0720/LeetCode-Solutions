@@ -37,9 +37,9 @@ A record of my systematic study and practice of algorithms and data structures s
 
 ## Progress
 
-**Started:** Late 2025
-**Primary Language:** Python
-**Platform:** LeetCode
+- **Started:** Late 2025
+- **Primary Language:** Python
+- **Platform:** LeetCode
 
 This repository is continuously updated as I organize and refine my solutions and analyses.
 
