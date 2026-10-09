@@ -10,18 +10,18 @@ A record of my systematic study and practice of algorithms and data structures s
 
 | Topic               | Problems |
 | ------------------- | -------: |
-| Arrays & Strings    |        — |
-| Linked Lists        |        — |
-| Stack & Queue       |        — |
-| Hash Table          |        — |
-| Binary Search       |        — |
-| Sorting             |        — |
-| Trees               |        — |
-| Graphs              |        — |
-| Greedy              |        — |
-| Backtracking        |        — |
-| Dynamic Programming |        — |
-| Mathematics         |        — |
+| Arrays & Strings    |        24|
+| Linked Lists        |        11|
+| Stack & Queue       |         3|
+| Hash Table          |         9|
+| Binary Search       |         5|
+| Sorting             |         2|
+| Trees               |        11|
+| Graphs              |         8|
+| Greedy              |         4|
+| Backtracking        |         6|
+| Dynamic Programming |        11|
+| Mathematics         |         2|
 
 ---
 
