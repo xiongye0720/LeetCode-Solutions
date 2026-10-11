@@ -21,11 +21,9 @@ class Solution:
             return []
         else:
             res = list(res.items())
-            res.sort()
             ans = []
             for item in res:
                 temNums = item[1]
-                temNums.sort()
                 for num in temNums:
                     for i in range(item[0]):
                         ans.append(num)
