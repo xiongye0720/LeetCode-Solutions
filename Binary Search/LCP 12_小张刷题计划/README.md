@@ -1,14 +1,16 @@
 # Approach and Correctness
 
-First, sort the positions in place, then perform binary search on the minimum distance between balls.
+Each day, asking for help saves the time needed for one problem, so the minimum actual time for a consecutive block of problems that day is `temSum - temMax`. The code uses binary search on the daily time limit.
 
-For a candidate distance `mid`, place the first ball at `loc[0]`. Then repeatedly find the leftmost position that is at least `mid` away from the previous ball, attempting to place the remaining `m - 1` balls. Placing each ball as early as possible leaves as much space as possible for later balls. Therefore, if this approach cannot place all the balls, no other placement can satisfy this distance.
+For a candidate limit `mid`, the code completes the longest feasible prefix of the remaining problems each day. The first problem that would exceed the limit is left for the next day and processed again using `ptr = temPtr`. Completing as many problems as possible today leaves a shorter suffix for later days. Removing a prefix cannot increase the actual time needed for a block of problems, so this partition gives the minimum number of days needed, `daysUsed`.
 
-A feasible distance remains feasible when reduced, so binary search can be used. Initially, `left = 0` is feasible, while `right = loc[-1] - loc[0] + 1` exceeds the entire range of positions and must be infeasible. Each round updates the endpoints based on the check result, keeping the left endpoint feasible and the right endpoint infeasible. When the two endpoints are adjacent, `left` is the maximum feasible distance.
+If the number of problems is at most `dayCnt`, each problem can be assigned its own day and solved with help, so the answer is `0`. Otherwise, since every problem takes positive time, `left = 0` is infeasible. The limit `right = totalTime - maxTime` is enough to complete all problems in one day, so it is feasible.
+
+Increasing the limit cannot increase the number of days needed, so feasibility can be checked using `daysUsed ≤ dayCnt`. Binary search keeps the left endpoint infeasible and the right endpoint feasible. When the endpoints are adjacent, the code returns `right`, the smallest feasible limit.
 
 # Complexity
 
-Let `n` be the number of positions and `D` be the difference between the largest and smallest positions.
+Let `n` be the number of problems and `U = totalTime - maxTime` be the initial upper bound for binary search.
 
-- **Time Complexity:** `O(n log n + n log(D + 1))`. Sorting takes `O(n log n)`. During each feasibility check, the scan keeps moving to the right, and the scanned segments overlap only at their endpoints. Therefore, each round still takes `O(n)`, even with nested loops.
-- **Auxiliary Space Complexity:** `O(n)`. Python's sort requires linear temporary space in the worst case. The binary search and placement check themselves use only a fixed number of variables.
+- **Time Complexity:** `O(n + n log(U + 1))`. Preprocessing scans the array once. In each feasibility check, a problem is examined at most twice, once when it causes the limit to be exceeded and once when it is processed again the next day. Each check therefore takes `O(n)` time.
+- **Auxiliary Space Complexity:** `O(1)`. Only a fixed number of variables are used, and `times` directly references the original array.
